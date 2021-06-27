@@ -14,3 +14,7 @@ const createFactsGridItem = function (itemType, content) {
 const createInfoItem = function () {
     createFactsGridItem(`info`,`In this grid you can dosnload and view fn and informative facts about cats`);
 }
+
+const createAddItemButton = function () {
+    createFactsGridItem(`add`,``)
+}
