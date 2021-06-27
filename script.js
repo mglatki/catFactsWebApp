@@ -54,14 +54,16 @@ const addFactItemToGrid = function (factItem) {
     grid.innerHTML += factItemHTML;
 }
 
-const crateFactsGrid = function () {
-    createInfoItem();
-    createAddItemButton();
-    //createCatFactItem();
+const createFactsGrid = function () {
+
+    grid.innerHTML = ``;
 
     factsGridItems.forEach(item => {
         addFactItemToGrid(item);
     });
 }
 
-crateFactsGrid();
+createInfoItem();
+createAddItemButton();
+createFactsGrid();
+
