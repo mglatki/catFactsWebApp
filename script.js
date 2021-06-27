@@ -18,3 +18,21 @@ const createInfoItem = function () {
 const createAddItemButton = function () {
     createFactsGridItem(`add`,``)
 }
+
+const getCatFact = async () => {
+
+    let data;
+
+    try {
+        const url = `https://catfact.ninja/fact`;
+        const res = await fetch(url);
+        console.log(res.ok);
+        data = await res.json();
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+        return;
+    }
+
+    createFactsGridItem(`fact`,data.fact)
+}
