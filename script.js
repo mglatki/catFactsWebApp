@@ -8,6 +8,10 @@ const createFactsGridItem = function (itemType, content) {
         content: content,
     }
 
+    if(itemType === `fact`) {
+        factsGridItems.splice((factsGridItems.length - 1), 0, item);
+    }
+    else
     factsGridItems.push(item);
 }
 
