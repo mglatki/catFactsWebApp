@@ -41,3 +41,27 @@ const createCatFactItem = async () => {
     const data = await getCatFact();
     createFactsGridItem(`fact`,data.fact)
 }
+
+const addFactItemToGrid = function (factItem) {
+
+    const factItemHTML = `
+    <div class="factItem">
+        <p class="factContent">${factItem.content}</p>
+    </div>`
+
+    const grid = document.querySelector(`main`);
+    console.log(grid);
+    grid.innerHTML += factItemHTML;
+}
+
+const crateFactsGrid = function () {
+    createInfoItem();
+    createAddItemButton();
+    //createCatFactItem();
+
+    factsGridItems.forEach(item => {
+        addFactItemToGrid(item);
+    });
+}
+
+crateFactsGrid();
