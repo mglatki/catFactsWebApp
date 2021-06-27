@@ -17,7 +17,7 @@ const createFactsGridItem = function (itemType, content) {
 }
 
 const createInfoItem = function () {
-    createFactsGridItem(`info`,`In this grid you can dosnload and view fn and informative facts about cats`);
+    createFactsGridItem(`info`,`In this grid you can download and view fn and informative facts about cats`);
 }
 
 const createAddItemButton = function () {
@@ -51,31 +51,24 @@ const addFactItemToGrid = function (factItem) {
         factItemHTML = `
         <div class="factItem">
             <button class="addFactButton">+</button>
-        </div>
-        `;
+        </div>`;
 
         grid.innerHTML += factItemHTML;
 
         document
         .querySelector(`.addFactButton`)
         .addEventListener(`click`, createCatFactItem);
-    } else 
-    // if(factItem.itemType === `fact`) 
-    {
+    } else {
         factItemHTML = `
         <div class="factItem">
             <p class="factContent">${factItem.content}</p>
-        </div>`
+        </div>`;
 
         grid.innerHTML += factItemHTML;
     }
-
-    //console.log(grid);
-    //console.log(factItem);
 }
 
 const createFactsGrid = function () {
-
     grid.innerHTML = ``;
 
     factsGridItems.forEach(item => {
