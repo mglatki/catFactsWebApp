@@ -20,19 +20,20 @@ const createAddItemButton = function () {
 }
 
 const getCatFact = async () => {
-
-    let data;
-
     try {
         const url = `https://catfact.ninja/fact`;
         const res = await fetch(url);
         console.log(res.ok);
-        data = await res.json();
+        const data = await res.json();
         console.log(data);
+        return data;
     } catch (error) {
         console.log(error);
-        return;
+        return error;
+    }
     }
 
+const createCatFactItem = async () => {
+    const data = await getCatFact();
     createFactsGridItem(`fact`,data.fact)
 }
