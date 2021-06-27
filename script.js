@@ -1,6 +1,7 @@
 'use strict';
 
 let factsGridItems = new Array();
+const grid = document.querySelector(`main`);
 
 const createFactsGridItem = function (itemType, content) {
     const item = {
@@ -40,18 +41,37 @@ const getCatFact = async () => {
 const createCatFactItem = async () => {
     const data = await getCatFact();
     createFactsGridItem(`fact`,data.fact)
+    createFactsGrid();
 }
 
 const addFactItemToGrid = function (factItem) {
 
-    const factItemHTML = `
-    <div class="factItem">
-        <p class="factContent">${factItem.content}</p>
-    </div>`
+    let factItemHTML = ``;
+    if (factItem.itemType === `add`) {
+        factItemHTML = `
+        <div class="factItem">
+            <button class="addFactButton">+</button>
+        </div>
+        `;
 
-    const grid = document.querySelector(`main`);
-    console.log(grid);
-    grid.innerHTML += factItemHTML;
+        grid.innerHTML += factItemHTML;
+
+        document
+        .querySelector(`.addFactButton`)
+        .addEventListener(`click`, createCatFactItem);
+    } else 
+    // if(factItem.itemType === `fact`) 
+    {
+        factItemHTML = `
+        <div class="factItem">
+            <p class="factContent">${factItem.content}</p>
+        </div>`
+
+        grid.innerHTML += factItemHTML;
+    }
+
+    //console.log(grid);
+    //console.log(factItem);
 }
 
 const createFactsGrid = function () {
