@@ -19,8 +19,11 @@
       grid-template-columns: 1fr;
   }
 
-  .factItem {
-      max-width: 15rem;
-      padding: 1rem;
-      border: blue solid 1px;
-  }
+.factItem {
+  padding: 1rem;
+  border: blue solid 1px;
+}
+
+.addFactButton {
+  width: 100%;
+}
