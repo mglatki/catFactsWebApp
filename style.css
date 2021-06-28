@@ -20,10 +20,19 @@
   }
 
 .factItem {
+  width: 100%;
   padding: 1rem;
   border: blue solid 1px;
 }
 
 .addFactButton {
   width: 100%;
+}
+
+@media (min-width: 600px) {
+  main {
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    justify-items: start;
+  }
 }
