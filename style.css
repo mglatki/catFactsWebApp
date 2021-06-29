@@ -1,23 +1,23 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
-  
-  html {
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
-  header {
-      background-color: aliceblue;
-      display: flex;
-      justify-content: center; 
-  }
+html {
+  box-sizing: border-box;
+}
 
-  main {
-      display: grid;
-      grid-template-columns: 1fr;
-  }
+header {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+}
 
 .factItem {
   width: 100%;
