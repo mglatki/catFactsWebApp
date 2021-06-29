@@ -32,7 +32,7 @@
 @media (min-width: 600px) {
   main {
     grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, 15rem);
     justify-items: start;
   }
 }
