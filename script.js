@@ -31,7 +31,6 @@ const getCatFact = async () => {
     const res = await fetch(url);
     console.log(res.ok);
     const data = await res.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -42,6 +41,11 @@ const getCatFact = async () => {
 const createCatFactItem = async () => {
   const data = await getCatFact();
   createFactsGridItem(`fact`, data.fact);
+  createFactsGrid();
+};
+
+const removeCatFactItem = async (index) => {
+  factsGridItems.splice(index, 1);
   createFactsGrid();
 };
 
@@ -87,3 +91,23 @@ const createFactsGrid = function () {
 createInfoItem();
 createAddItemButton();
 createFactsGrid();
+
+grid.addEventListener(
+  `click`,
+  (event) => {
+    let removeButton = event.target;
+    const selector = `button`;
+    while (removeButton != null) {
+      if (removeButton.localName == selector) {
+        if (removeButton.classList.contains(`removeFactButton`)) {
+          removeCatFactItem(
+            removeButton.parentElement.getAttribute("griditemid")
+          );
+        }
+        return;
+      }
+      removeButton = removeButton.parentElement;
+    }
+  },
+  true
+);
