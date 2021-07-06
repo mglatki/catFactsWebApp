@@ -45,12 +45,12 @@ const createCatFactItem = async () => {
   createFactsGrid();
 };
 
-const addFactItemToGrid = function (factItem) {
+const addFactItemToGrid = function (index, factItem) {
   let factItemHTML = ``;
   if (factItem.itemType === `add`) {
     factItemHTML = `
-        <div class="factItem">
-            <button class="addFactButton">+</button>
+        <div class="factItem" gridItemId="${index}">
+            <button class="addFactButton">Add new cat fact</button>
         </div>`;
 
     grid.innerHTML += factItemHTML;
@@ -58,9 +58,17 @@ const addFactItemToGrid = function (factItem) {
     document
       .querySelector(`.addFactButton`)
       .addEventListener(`click`, createCatFactItem);
+  } else if (factItem.itemType === `fact`) {
+    factItemHTML = `
+        <div class="factItem" gridItemId="${index}">
+            <button class="removeFactButton">Remove</button>
+            <p class="factContent">${factItem.content}</p>
+        </div>`;
+
+    grid.innerHTML += factItemHTML;
   } else {
     factItemHTML = `
-        <div class="factItem">
+        <div class="factItem" gridItemId="${index}">
             <p class="factContent">${factItem.content}</p>
         </div>`;
 
@@ -71,9 +79,9 @@ const addFactItemToGrid = function (factItem) {
 const createFactsGrid = function () {
   grid.innerHTML = ``;
 
-  factsGridItems.forEach((item) => {
-    addFactItemToGrid(item);
-  });
+  for (let i = 0; factsGridItems.length > i; i++) {
+    addFactItemToGrid(i, factsGridItems[i]);
+  }
 };
 
 createInfoItem();
