@@ -6,12 +6,15 @@
 
 html {
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
   background-color: aliceblue;
+  color: cornflowerblue;
   display: flex;
   justify-content: center;
+  padding: 0.6rem;
 }
 
 main {
@@ -19,16 +22,35 @@ main {
   grid-gap: 1rem;
   grid-template-columns: 1fr;
   margin: 1rem;
+  font-weight: 400;
 }
 
 .factItem {
+  background-color: cornflowerblue;
+  color: aliceblue;
+  display: grid;
+  align-content: space-between;
   width: 100%;
   padding: 1rem;
-  border: blue solid 1px;
+}
+
+button {
+  border: none;
+  background-color: aliceblue;
+  color: cornflowerblue;
+  font-family: "Montserrat", sans-serif;
+  /* font-weight: 400; */
+  padding: 0.6em;
+}
+
+.removeFactButton {
+  margin-top: 0.6rem;
+  height: 2.2rem;
 }
 
 .addFactButton {
   width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 600px) {

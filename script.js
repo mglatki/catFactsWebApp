@@ -65,8 +65,8 @@ const addFactItemToGrid = function (index, factItem) {
   } else if (factItem.itemType === `fact`) {
     factItemHTML = `
         <div class="factItem" gridItemId="${index}">
-            <button class="removeFactButton">Remove</button>
             <p class="factContent">${factItem.content}</p>
+            <button class="removeFactButton">Remove</button>
         </div>`;
 
     grid.innerHTML += factItemHTML;
