@@ -53,7 +53,7 @@ const addFactItemToGrid = function (index, factItem) {
   let factItemHTML = ``;
   if (factItem.itemType === `add`) {
     factItemHTML = `
-        <div class="factItem" gridItemId="${index}">
+        <div class="factItem addFactItem" gridItemId="${index}">
             <button class="addFactButton">Add new cat fact</button>
         </div>`;
 

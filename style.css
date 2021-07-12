@@ -39,13 +39,21 @@ button {
   background-color: aliceblue;
   color: cornflowerblue;
   font-family: "Montserrat", sans-serif;
-  /* font-weight: 400; */
   padding: 0.6em;
+}
+
+button:active {
+  background-color: white;
+  font-weight: 900;
 }
 
 .removeFactButton {
   margin-top: 0.6rem;
   height: 2.2rem;
+}
+
+.addFactItem {
+  display: flex;
 }
 
 .addFactButton {
