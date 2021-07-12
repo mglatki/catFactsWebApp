@@ -1,28 +1,27 @@
 "use strict";
 
-let factsGridItems = new Array();
 const grid = document.querySelector(`main`);
 
-const createFactsGridItem = function (itemType, content) {
-  const item = {
-    itemType: itemType,
-    content: content,
-  };
-
-  if (itemType === `fact`) {
-    factsGridItems.splice(factsGridItems.length - 1, 0, item);
-  } else factsGridItems.push(item);
-};
-
 const createInfoItem = function () {
-  createFactsGridItem(
-    `info`,
-    `In this grid you can download and view informative facts about cats`
-  );
+  const factItemHTML = `
+        <div class="factItem">
+            <p class="factContent">'In this grid you can download and view informative facts about cats'</p>
+        </div>`;
+
+  grid.innerHTML += factItemHTML;
 };
 
 const createAddItemButton = function () {
-  createFactsGridItem(`add`, ``);
+  const factItemHTML = `
+        <div class="factItem addFactItem">
+            <button class="addFactButton">Add new cat fact</button>
+        </div>`;
+
+  grid.innerHTML += factItemHTML;
+
+  document
+    .querySelector(`.addFactButton`)
+    .addEventListener(`click`, addCatFactItemToGrid);
 };
 
 const getCatFact = async () => {
@@ -40,57 +39,43 @@ const getCatFact = async () => {
 
 const createCatFactItem = async () => {
   const data = await getCatFact();
-  createFactsGridItem(`fact`, data.fact);
-  createFactsGrid();
+  return createFactsGridItem(data.fact);
 };
 
-const removeCatFactItem = async (index) => {
+const removeCatFactItemByID = async (index) => {
   factsGridItems.splice(index, 1);
-  createFactsGrid();
+  createFactsGridStartItems();
 };
 
-const addFactItemToGrid = function (index, factItem) {
-  let factItemHTML = ``;
-  if (factItem.itemType === `add`) {
-    factItemHTML = `
-        <div class="factItem addFactItem" gridItemId="${index}">
-            <button class="addFactButton">Add new cat fact</button>
-        </div>`;
+const createFactsGridItem = function (content) {
+  const factParagraph = document.createElement(`p`);
+  factParagraph.classList.add(`factContent`);
+  factParagraph.innerText = content;
 
-    grid.innerHTML += factItemHTML;
+  const factRemoveButton = document.createElement(`button`);
+  factRemoveButton.classList.add(`removeFactButton`);
+  factRemoveButton.innerText = `Remove`;
 
-    document
-      .querySelector(`.addFactButton`)
-      .addEventListener(`click`, createCatFactItem);
-  } else if (factItem.itemType === `fact`) {
-    factItemHTML = `
-        <div class="factItem" gridItemId="${index}">
-            <p class="factContent">${factItem.content}</p>
-            <button class="removeFactButton">Remove</button>
-        </div>`;
+  const factDiv = document.createElement(`div`);
+  factDiv.classList.add(`factItem`);
+  factDiv.appendChild(factParagraph);
+  factDiv.appendChild(factRemoveButton);
 
-    grid.innerHTML += factItemHTML;
-  } else {
-    factItemHTML = `
-        <div class="factItem" gridItemId="${index}">
-            <p class="factContent">${factItem.content}</p>
-        </div>`;
-
-    grid.innerHTML += factItemHTML;
-  }
+  return factDiv;
 };
 
-const createFactsGrid = function () {
-  grid.innerHTML = ``;
+const addCatFactItemToGrid = async () => {
+  const factItem = await createCatFactItem();
 
-  for (let i = 0; factsGridItems.length > i; i++) {
-    addFactItemToGrid(i, factsGridItems[i]);
-  }
+  grid.insertBefore(factItem, grid.children[grid.children.length - 1]);
 };
 
-createInfoItem();
-createAddItemButton();
-createFactsGrid();
+const createFactsGridStartItems = function () {
+  createInfoItem();
+  createAddItemButton();
+};
+
+createFactsGridStartItems();
 
 grid.addEventListener(
   `click`,
@@ -100,7 +85,7 @@ grid.addEventListener(
     while (removeButton != null) {
       if (removeButton.localName == selector) {
         if (removeButton.classList.contains(`removeFactButton`)) {
-          removeCatFactItem(
+          removeCatFactItemByID(
             removeButton.parentElement.getAttribute("griditemid")
           );
         }
