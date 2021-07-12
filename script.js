@@ -16,7 +16,7 @@ const createInfoItem = function () {
   factDiv.classList.add(factItemClass);
   factDiv.appendChild(factParagraph);
 
-  grid.innerHTML += factItemHTML;
+  grid.appendChild(factDiv);
 };
 
 const createAddItemButton = function () {
