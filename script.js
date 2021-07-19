@@ -1,11 +1,14 @@
 "use strict";
 
 const grid = document.querySelector(`main`);
+const catFactsMode = document.getElementById(`catFactModeSwitch`);
 const factItemClass = `factItem`;
 const addFactItemClass = `addFactItem`;
 const removeFactButtonClass = `removeFactButton`;
 const addFactButtonClass = `addFactButton`;
 const factContentClass = `factContent`;
+const singleFactSliderModeText = `Single fact`;
+const stackFactsSliderModeText = `Stack facts`;
 
 const createInfoItem = function () {
   const factParagraph = document.createElement(`p`);
@@ -17,23 +20,6 @@ const createInfoItem = function () {
   factDiv.appendChild(factParagraph);
 
   grid.appendChild(factDiv);
-};
-
-const createAddItemButton = function () {
-  const factRemoveButton = document.createElement(`button`);
-  factRemoveButton.classList.add(addFactButtonClass);
-  factRemoveButton.innerText = `Add new cat fact`;
-
-  const factDiv = document.createElement(`div`);
-  factDiv.classList.add(factItemClass);
-  factDiv.classList.add(addFactItemClass);
-  factDiv.appendChild(factRemoveButton);
-
-  grid.appendChild(factDiv);
-
-  document
-    .querySelector(`.${addFactButtonClass}`)
-    .addEventListener(`click`, addCatFactItemToGrid);
 };
 
 const getCatFact = async () => {
@@ -75,20 +61,44 @@ const createFactsGridItem = function (content) {
   return factDiv;
 };
 
-// const addCatFactItemToGrid = async () => {
-//   const factItem = await createCatFactItem();
+const addAnotherCatFactItemToGrid = async () => {
+  const factItem = await createCatFactItem();
 
-//   grid.insertBefore(factItem, grid.children[grid.children.length - 1]);
-// };
+  grid.insertBefore(factItem, grid.lastChild);
+};
 
-const addCatFactItemToGrid = async () => {
+const replaceCatFactItemInGrid = async () => {
   const factItem = await createCatFactItem();
 
   grid.innerText = ``;
   createFactsGridStartItems();
-  console.log(grid.childNodes);
 
-  grid.insertBefore(factItem, grid.children[grid.children.length - 1]);
+  grid.insertBefore(factItem, grid.lastChild);
+};
+
+const addCatFactItemToGrid = () => {
+  if (catFactsMode.checked) {
+    replaceCatFactItemInGrid();
+  } else {
+    addAnotherCatFactItemToGrid();
+  }
+};
+
+const createAddItemButton = function () {
+  const factRemoveButton = document.createElement(`button`);
+  factRemoveButton.classList.add(addFactButtonClass);
+  factRemoveButton.innerText = `Add new cat fact`;
+
+  const factDiv = document.createElement(`div`);
+  factDiv.classList.add(factItemClass);
+  factDiv.classList.add(addFactItemClass);
+  factDiv.appendChild(factRemoveButton);
+
+  grid.appendChild(factDiv);
+
+  document
+    .querySelector(`.${addFactButtonClass}`)
+    .addEventListener(`click`, addCatFactItemToGrid);
 };
 
 const createFactsGridStartItems = function () {
@@ -115,3 +125,16 @@ grid.addEventListener(
   },
   true
 );
+
+const toggleCatFactsMode = () => {
+  let sliderModeText = document.getElementById(`sliderModeText`);
+
+  if (catFactsMode.checked) {
+    sliderModeText.innerText = singleFactSliderModeText;
+  } else {
+    sliderModeText.innerText = stackFactsSliderModeText;
+  }
+};
+
+catFactsMode.checked = false;
+sliderModeText.innerText = stackFactsSliderModeText;

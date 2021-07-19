@@ -13,15 +13,21 @@ header {
   background-color: aliceblue;
   color: cornflowerblue;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0.6rem;
+}
+
+.sliderMode {
+  display: grid;
+  grid-template-columns: 1fr 1rem;
+  grid-gap: 1rem;
 }
 
 main {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 1fr;
-  margin: 1rem;
+  margin: 0.6rem;
   font-weight: 400;
 }
 

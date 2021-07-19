@@ -16,6 +16,18 @@
   <body>
     <header>
       <h1>Cat Facts</h1>
+      <div class="sliderMode">
+        <p id="sliderModeText">Stack facts</p>
+        <label class="switch">
+          <input
+            type="checkbox"
+            name="sd"
+            id="catFactModeSwitch"
+            onclick="toggleCatFactsMode()"
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
     </header>
     <main></main>
     <script src="script.js"></script>
