@@ -75,8 +75,18 @@ const createFactsGridItem = function (content) {
   return factDiv;
 };
 
+// const addCatFactItemToGrid = async () => {
+//   const factItem = await createCatFactItem();
+
+//   grid.insertBefore(factItem, grid.children[grid.children.length - 1]);
+// };
+
 const addCatFactItemToGrid = async () => {
   const factItem = await createCatFactItem();
+
+  grid.innerText = ``;
+  createFactsGridStartItems();
+  console.log(grid.childNodes);
 
   grid.insertBefore(factItem, grid.children[grid.children.length - 1]);
 };
