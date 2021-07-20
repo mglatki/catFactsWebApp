@@ -131,8 +131,42 @@ const toggleCatFactsMode = () => {
 
   if (catFactsMode.checked) {
     sliderModeText.innerText = singleFactSliderModeText;
+    hideRemoveButtons();
   } else {
     sliderModeText.innerText = stackFactsSliderModeText;
+    showRemoveButtons();
+  }
+};
+
+const hideRemoveButtons = () => {
+  if (grid.childElementCount > 2) {
+    for (let i = 1; i < grid.childElementCount - 1; i++) {
+      const lastChild = grid.children[i].lastChild;
+
+      if (
+        lastChild.localName === `button` &&
+        lastChild.classList.contains(removeFactButtonClass) &&
+        !lastChild.classList.contains(`hideRemoveButton`)
+      ) {
+        lastChild.classList.add(`hideRemoveButton`);
+      }
+    }
+  }
+};
+
+const showRemoveButtons = () => {
+  if (grid.childElementCount > 2) {
+    for (let i = 1; i < grid.childElementCount - 1; i++) {
+      const lastChild = grid.children[i].lastChild;
+
+      if (
+        lastChild.localName === `button` &&
+        lastChild.classList.contains(removeFactButtonClass) &&
+        lastChild.classList.contains(`hideRemoveButton`)
+      ) {
+        lastChild.classList.remove(`hideRemoveButton`);
+      }
+    }
   }
 };
 

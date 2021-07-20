@@ -104,6 +104,10 @@ button:active {
   height: 2.2rem;
 }
 
+.hideRemoveButton {
+  display: none;
+}
+
 .addFactItem {
   display: flex;
 }
