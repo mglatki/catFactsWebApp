@@ -7,6 +7,7 @@ const addFactItemClass = `addFactItem`;
 const removeFactButtonClass = `removeFactButton`;
 const addFactButtonClass = `addFactButton`;
 const factContentClass = `factContent`;
+const hideRemoveButtonClass = `hideRemoveButton`;
 const singleFactSliderModeText = `Single fact`;
 const stackFactsSliderModeText = `Stack facts`;
 
@@ -52,6 +53,10 @@ const createFactsGridItem = function (content) {
   const factRemoveButton = document.createElement(`button`);
   factRemoveButton.classList.add(removeFactButtonClass);
   factRemoveButton.innerText = `Remove`;
+
+  if (catFactsMode.checked) {
+    factRemoveButton.classList.add(hideRemoveButtonClass);
+  }
 
   const factDiv = document.createElement(`div`);
   factDiv.classList.add(factItemClass);
@@ -146,9 +151,9 @@ const hideRemoveButtons = () => {
       if (
         lastChild.localName === `button` &&
         lastChild.classList.contains(removeFactButtonClass) &&
-        !lastChild.classList.contains(`hideRemoveButton`)
+        !lastChild.classList.contains(hideRemoveButtonClass)
       ) {
-        lastChild.classList.add(`hideRemoveButton`);
+        lastChild.classList.add(hideRemoveButtonClass);
       }
     }
   }
@@ -162,9 +167,9 @@ const showRemoveButtons = () => {
       if (
         lastChild.localName === `button` &&
         lastChild.classList.contains(removeFactButtonClass) &&
-        lastChild.classList.contains(`hideRemoveButton`)
+        lastChild.classList.contains(hideRemoveButtonClass)
       ) {
-        lastChild.classList.remove(`hideRemoveButton`);
+        lastChild.classList.remove(hideRemoveButtonClass);
       }
     }
   }
