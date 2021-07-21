@@ -71,10 +71,9 @@ const addAnotherCatFactItemToGrid = async (factItem) => {
 };
 
 const replaceCatFactItemInGrid = async (factItem) => {
+  const nodes = [grid.firstChild, factItem, grid.lastChild];
   grid.innerText = ``;
-  createFactsGridStartItems();
-
-  grid.insertBefore(factItem, grid.lastChild);
+  grid.append(...nodes);
 };
 
 const addCatFactItemToGrid = async () => {
