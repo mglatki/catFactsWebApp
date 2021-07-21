@@ -66,26 +66,24 @@ const createFactsGridItem = function (content) {
   return factDiv;
 };
 
-const addAnotherCatFactItemToGrid = async () => {
-  const factItem = await createCatFactItem();
-
+const addAnotherCatFactItemToGrid = async (factItem) => {
   grid.insertBefore(factItem, grid.lastChild);
 };
 
-const replaceCatFactItemInGrid = async () => {
-  const factItem = await createCatFactItem();
-
+const replaceCatFactItemInGrid = async (factItem) => {
   grid.innerText = ``;
   createFactsGridStartItems();
 
   grid.insertBefore(factItem, grid.lastChild);
 };
 
-const addCatFactItemToGrid = () => {
+const addCatFactItemToGrid = async () => {
+  const factItem = await createCatFactItem();
+
   if (catFactsMode.checked) {
-    replaceCatFactItemInGrid();
+    replaceCatFactItemInGrid(factItem);
   } else {
-    addAnotherCatFactItemToGrid();
+    addAnotherCatFactItemToGrid(factItem);
   }
 };
 
@@ -136,6 +134,10 @@ const toggleCatFactsMode = () => {
 
   if (catFactsMode.checked) {
     sliderModeText.innerText = singleFactSliderModeText;
+    if (grid.childElementCount > 2) {
+      const factItem = grid.childNodes[grid.childElementCount - 2];
+      replaceCatFactItemInGrid(factItem);
+    }
     hideRemoveButtons();
   } else {
     sliderModeText.innerText = stackFactsSliderModeText;
