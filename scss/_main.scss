@@ -1,0 +1,47 @@
+main {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
+  margin: 0.6rem;
+  font-weight: 400;
+}
+
+.factItem {
+  background-color: cornflowerblue;
+  color: aliceblue;
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+button {
+  border: none;
+  background-color: aliceblue;
+  color: cornflowerblue;
+  font-family: "Montserrat", sans-serif;
+  padding: 0.6em;
+}
+
+button:active {
+  background-color: white;
+  font-weight: 900;
+}
+
+.removeFactButton {
+  margin-top: 0.6rem;
+  height: 2.2rem;
+}
+
+.hideRemoveButton {
+  display: none;
+}
+
+.addFactItem {
+  display: flex;
+}
+
+.addFactButton {
+  width: 100%;
+  height: 100%;
+}

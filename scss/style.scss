@@ -1,0 +1,9 @@
+@use 'base';
+@use 'header';
+@use 'main';
+
+@media (min-width: 600px) {
+  main {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+}
