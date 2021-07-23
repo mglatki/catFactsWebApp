@@ -1,3 +1,5 @@
+@use 'base';
+
 main {
   display: grid;
   grid-gap: 1rem;
@@ -7,8 +9,8 @@ main {
 }
 
 .factItem {
-  background-color: cornflowerblue;
-  color: aliceblue;
+  background-color: $primary-color;
+  color: $secondary-color;
   display: grid;
   align-content: space-between;
   width: 100%;
@@ -17,8 +19,8 @@ main {
 
 button {
   border: none;
-  background-color: aliceblue;
-  color: cornflowerblue;
+  background-color: $secondary-color;
+  color: $primary-color;
   font-family: "Montserrat", sans-serif;
   padding: 0.6em;
 }
