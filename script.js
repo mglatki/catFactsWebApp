@@ -176,5 +176,45 @@ const showRemoveButtons = () => {
   }
 };
 
+const hideCustomCatInfoForm = () => {
+  const customCatInfoForm =
+    document.getElementsByClassName(`customCatInfoForm`)[0];
+
+  if (!customCatInfoForm.classList.contains(`customCatInfoFormHide`))
+    customCatInfoForm.classList.add(`customCatInfoFormHide`);
+
+  const customCatInfo = document.getElementsByClassName(`customCatInfo`)[0];
+  if (customCatInfo.classList.contains(`customCatInfoHide`))
+    customCatInfo.classList.remove(`customCatInfoHide`);
+};
+
+const showCustomCatInfoForm = () => {
+  const customCatInfoForm =
+    document.getElementsByClassName(`customCatInfoForm`)[0];
+
+  if (customCatInfoForm.classList.contains(`customCatInfoFormHide`))
+    customCatInfoForm.classList.remove(`customCatInfoFormHide`);
+
+  const addCustomCatInfoButton = document.getElementById(
+    `addCustomCatInfoButton`
+  );
+
+  if (!addCustomCatInfoButton.classList.contains(`addCustomCatInfoButtonHide`))
+    addCustomCatInfoButton.classList.add(`addCustomCatInfoButtonHide`);
+
+  const customCatInfo = document.getElementsByClassName(`customCatInfo`)[0];
+
+  if (!customCatInfo.classList.contains(`customCatInfoHide`))
+    customCatInfo.classList.add(`customCatInfoHide`);
+};
+
+document
+  .getElementById(`customCatInfoFormSubmitButton`)
+  .addEventListener(`click`, hideCustomCatInfoForm);
+
+document
+  .getElementById(`addCustomCatInfoButton`)
+  .addEventListener(`click`, showCustomCatInfoForm);
+
 catFactsMode.checked = false;
 sliderModeText.innerText = stackFactsSliderModeText;

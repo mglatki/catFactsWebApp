@@ -114,6 +114,47 @@ button:active {
   height: 100%;
 }
 
+info {
+  font-weight: 400;
+}
+
+.customCatInfoForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.6rem;
+  margin: 0.6rem;
+}
+
+.customCatInfoFormInput {
+  color: cornflowerblue;
+  font-family: "Monserrat", sans-serif;
+}
+
+.customCatInfoHide {
+  display: none;
+}
+
+.customCatInfoFormHide {
+  display: none;
+}
+
+.addCustomCatInfoButtonHide {
+  display: none;
+}
+
+.customCatInfo {
+  display: grid;
+  margin: 0.6rem;
+}
+
+.customCatInfo p {
+  color: cornflowerblue;
+}
+
+.customCatInfoHide {
+  display: none;
+}
+
 @media (min-width: 600px) {
   main {
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));

@@ -1,6 +1,7 @@
 @use 'base';
 @use 'header';
 @use 'main';
+@use 'info';
 
 @media (min-width: 600px) {
   main {
