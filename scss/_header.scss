@@ -1,8 +1,8 @@
 @use 'base';
 
 header {
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: base.$secondary-color;
+  color: base.$primary-color;
   display: flex;
   justify-content: space-between;
   padding: 0.6rem;
@@ -34,7 +34,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $primary-color;
+  background-color: base.$primary-color;
   display: inline-block;
   height: 2rem;
   width: 4rem;

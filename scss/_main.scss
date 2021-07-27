@@ -9,8 +9,8 @@ main {
 }
 
 .factItem {
-  background-color: $primary-color;
-  color: $secondary-color;
+  background-color: base.$primary-color;
+  color: base.$secondary-color;
   display: grid;
   align-content: space-between;
   width: 100%;
@@ -19,8 +19,8 @@ main {
 
 button {
   border: none;
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: base.$secondary-color;
+  color: base.$primary-color;
   font-family: "Montserrat", sans-serif;
   padding: 0.6em;
 }
